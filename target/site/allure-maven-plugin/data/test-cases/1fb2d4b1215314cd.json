@@ -1,0 +1,79 @@
+{
+  "uid" : "1fb2d4b1215314cd",
+  "name" : "shouldShowErrorForShortPassword",
+  "fullName" : "RegistrationTest.shouldShowErrorForShortPassword",
+  "historyId" : "6860caf010dcbe04d8f746b581480f76",
+  "time" : {
+    "start" : 1787958080393,
+    "stop" : 1787958083223,
+    "duration" : 2830
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Ошибка при пароле короче 6 символов",
+      "time" : {
+        "start" : 1787958081503,
+        "stop" : 1787958082960,
+        "duration" : 1457
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 1,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : ""
+  }, {
+    "name" : "testClass",
+    "value" : "RegistrationTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "shouldShowErrorForShortPassword"
+  }, {
+    "name" : "suite",
+    "value" : "RegistrationTest"
+  }, {
+    "name" : "host",
+    "value" : "WIN-KIG0MDCNHNF"
+  }, {
+    "name" : "thread",
+    "value" : "20808@WIN-KIG0MDCNHNF.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit4"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "1fb2d4b1215314cd.json",
+  "parameterValues" : [ ]
+}

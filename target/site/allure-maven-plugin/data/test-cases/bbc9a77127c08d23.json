@@ -1,0 +1,89 @@
+{
+  "uid" : "bbc9a77127c08d23",
+  "name" : "shouldRegistrationSuccessful",
+  "fullName" : "RegistrationTest.shouldRegistrationSuccessful",
+  "historyId" : "f5136d85d9a4a6d3e248311f8fa0d841",
+  "time" : {
+    "start" : 1787959466898,
+    "stop" : 1787959469959,
+    "duration" : 3061
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Успешная регистрация нового пользователя",
+      "time" : {
+        "start" : 1787959468067,
+        "stop" : 1787959469720,
+        "duration" : 1653
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 1,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : ""
+  }, {
+    "name" : "testClass",
+    "value" : "RegistrationTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "shouldRegistrationSuccessful"
+  }, {
+    "name" : "suite",
+    "value" : "RegistrationTest"
+  }, {
+    "name" : "host",
+    "value" : "WIN-KIG0MDCNHNF"
+  }, {
+    "name" : "thread",
+    "value" : "20864@WIN-KIG0MDCNHNF.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit4"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "1246c2d381e6d016",
+      "status" : "passed",
+      "time" : {
+        "start" : 1787958077372,
+        "stop" : 1787958080390,
+        "duration" : 3018
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "bbc9a77127c08d23.json",
+  "parameterValues" : [ ]
+}

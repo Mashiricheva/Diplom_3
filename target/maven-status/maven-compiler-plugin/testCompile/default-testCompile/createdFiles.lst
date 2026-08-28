@@ -1,0 +1,8 @@
+page\object\RegisterPage.class
+RegistrationTest.class
+page\object\MainPage.class
+LoginTest.class
+page\object\LoginPage.class
+page\object\FactoryDriver.class
+page\object\ForgotPasswordPage.class
+DesignerTest.class

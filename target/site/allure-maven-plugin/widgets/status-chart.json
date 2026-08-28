@@ -1,0 +1,91 @@
+[ {
+  "uid" : "1f8f95ce9d54a07c",
+  "name" : "GoBunSection",
+  "time" : {
+    "start" : 1787959445227,
+    "stop" : 1787959448698,
+    "duration" : 3471
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b6489743ef047c35",
+  "name" : "GoFillingsSection",
+  "time" : {
+    "start" : 1787959448700,
+    "stop" : 1787959451177,
+    "duration" : 2477
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "cfb796d32c2ccfa0",
+  "name" : "GoSaucesSection",
+  "time" : {
+    "start" : 1787959439924,
+    "stop" : 1787959444912,
+    "duration" : 4988
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "d3b38a7029784e76",
+  "name" : "loginRegistrationForm",
+  "time" : {
+    "start" : 1787959455428,
+    "stop" : 1787959459361,
+    "duration" : 3933
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "28ae96b4cc0976c5",
+  "name" : "loginForgotPasswordForm",
+  "time" : {
+    "start" : 1787959451187,
+    "stop" : 1787959455424,
+    "duration" : 4237
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "947b2ef22dd22cb1",
+  "name" : "loginPersonalAccount",
+  "time" : {
+    "start" : 1787959463016,
+    "stop" : 1787959466888,
+    "duration" : 3872
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e82053adf27f8ff0",
+  "name" : "shouldShowErrorForShortPassword",
+  "time" : {
+    "start" : 1787959469963,
+    "stop" : 1787959473058,
+    "duration" : 3095
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "6bee335c84dee64c",
+  "name" : "loginMainPageButton",
+  "time" : {
+    "start" : 1787959459364,
+    "stop" : 1787959463013,
+    "duration" : 3649
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "bbc9a77127c08d23",
+  "name" : "shouldRegistrationSuccessful",
+  "time" : {
+    "start" : 1787959466898,
+    "stop" : 1787959469959,
+    "duration" : 3061
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

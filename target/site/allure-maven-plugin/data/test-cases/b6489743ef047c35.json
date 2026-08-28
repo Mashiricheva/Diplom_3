@@ -1,0 +1,89 @@
+{
+  "uid" : "b6489743ef047c35",
+  "name" : "GoFillingsSection",
+  "fullName" : "DesignerTest.GoFillingsSection",
+  "historyId" : "6d33bec181d081d50aba128254a4573e",
+  "time" : {
+    "start" : 1787959448700,
+    "stop" : 1787959451177,
+    "duration" : 2477
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Переход к разделу начинки",
+      "time" : {
+        "start" : 1787959449871,
+        "stop" : 1787959450915,
+        "duration" : 1044
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 1,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : ""
+  }, {
+    "name" : "testClass",
+    "value" : "DesignerTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "GoFillingsSection"
+  }, {
+    "name" : "suite",
+    "value" : "DesignerTest"
+  }, {
+    "name" : "host",
+    "value" : "WIN-KIG0MDCNHNF"
+  }, {
+    "name" : "thread",
+    "value" : "20864@WIN-KIG0MDCNHNF.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit4"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "84e93ea5af5e5ba6",
+      "status" : "passed",
+      "time" : {
+        "start" : 1787958059747,
+        "stop" : 1787958062408,
+        "duration" : 2661
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "b6489743ef047c35.json",
+  "parameterValues" : [ ]
+}
