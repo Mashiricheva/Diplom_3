@@ -1,5 +1,6 @@
 package page.object;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -22,23 +23,23 @@ public class RegisterPage {
     public RegisterPage (WebDriver driver) {
         this.driver = driver;
     }
-    // Заполняем поле Имя
+    @Step ("Заполняем поле Имя")
     public void enterNameFieldRegisterForm (String name) {
         driver.findElement(nameFieldRegisterForm).sendKeys(name);
     }
-    // Заполняем поле Email
+    @Step ("Заполняем поле Email")
     public void enterEmailFieldRegistrationForm (String email) {
         driver.findElement(emailFieldRegistrationForm).sendKeys(email);
     }
-    // Заполням поле Пароль
+    @Step ("Заполням поле Пароль")
     public void enterPasswordFieldRegistrationForm (String password) {
         driver.findElement(passwordFieldRegistrationForm).sendKeys(password);
     }
-    // Нажимаем на кнопку Зарегистрироваться
+    @Step ("Нажимаем на кнопку Зарегистрироваться")
     public void clickRegistrationButton () {
         driver.findElement(registrationButton).click();
     }
-    // Переходим на страницу авторизации
+    @Step ("Переходим на страницу авторизации")
     public void clickLoginLink () {
         driver.findElement(loginLink).click();
     }
@@ -49,7 +50,7 @@ public class RegisterPage {
         enterPasswordFieldRegistrationForm(password);
         clickRegistrationButton();
     }
-    // Проверяем наличие сообщения об ошибке
+    @Step ("Проверяем наличие сообщения об ошибке")
     public boolean isPasswordErrorVisible () {
         try {
             return driver.findElement(errorMassage).isDisplayed();
@@ -57,7 +58,7 @@ public class RegisterPage {
             return false;
         }
     }
-    // Получаем текст ошибки
+    @Step ("Получаем текст ошибки")
     public String getPasswordError () {
         return driver.findElement(errorMassage).getText();
     }

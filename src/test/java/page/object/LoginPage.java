@@ -1,5 +1,6 @@
 package page.object;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -22,15 +23,15 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    // Заполняем поле Email
+    @Step("Заполняем поле Email")
     public void enterEmailField (String email) {
         driver.findElement(emailField).sendKeys(email);
     }
-    // Заполняем поле с паролем
+    @Step ("Заполняем поле с паролем")
     public void enterPasswordField (String password) {
         driver.findElement(passwordField).sendKeys(password);
     }
-    // нажимаем на кноаку Войти
+    @Step ("Нажимаем на кноаку Войти")
     public void clickLoginButtonFormLogin () {
         driver.findElement(loginButton).click();
     }
@@ -40,7 +41,7 @@ public class LoginPage {
         enterPasswordField(password);
         clickLoginButtonFormLogin();
     }
-    // Проверяем, что пользователя отправило на форму входа (после успешной регистрации)
+    @Step ("Проверяем, что пользователя отправило на форму входа (после успешной регистрации)")
     public boolean isLoginFormVisible() {
         try {
             return driver.findElement(loginButton).isDisplayed();
@@ -49,11 +50,11 @@ public class LoginPage {
         }
     }
 
-    // Переходим к форме регистрации
+    @Step ("Переходим к форме регистрации")
     public void clickRegistrationFormTransit () {
         driver.findElement(registrationFormTransit).click();
     }
-    // Переходим к форме восстановления пароля
+    @Step ("Переходим к форме восстановления пароля")
     public void clickPasswordRecoveryFormTransition () {
         driver.findElement(passwordRecoveryFormTransition).click();
     }

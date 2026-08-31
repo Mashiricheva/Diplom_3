@@ -1,39 +1,46 @@
 import io.qameta.allure.Step;
+import io.restassured.response.Response;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import page.object.*;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class LoginTest extends FactoryDriver {
+public class LoginTest  {
+
+    private UserApi userApi;
     private String email;
-    private final String password = "password123";
+    private String password;
+    private String accessToken;
 
     @Rule
     public FactoryDriver factoryDriver = new FactoryDriver();
 
     @Before
     public void registerUser() {
-        WebDriver driver = factoryDriver.getDriver();
-        MainPage mainPage = new MainPage(driver);
-        mainPage.openPage();                     // открыли главную
-        mainPage.clickLoginButton();              // перешли на страницу входа
-
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickRegistrationFormTransit(); // перешли на регистрацию
-
-        RegisterPage registerPage = new RegisterPage(driver);
+        userApi = new UserApi();
         email = "user" + System.currentTimeMillis() + "@yandex.ru";
-        registerPage.register("Test User", email, password);
+        password = "password123";
 
-        // После регистрации откроется форма входа, возвращаемся на главную
-        mainPage.openPage();
+        User user = new User(email, password, "Test");
+        Response response = userApi.register(user);
+        accessToken = response.jsonPath().getString("accessToken");
+        assertNotNull("Токен должен быть получен", accessToken);
+
+    }
+    @After
+    public void deleteUserViaApi() {
+        if (accessToken != null) {
+            userApi.deleteUser(accessToken);
+        }
     }
 
     @Test
-    @Step ("Вход по кнопке «Войти в аккаунт» на главной")
+    //"Вход по кнопке «Войти в аккаунт» на главной"
 
     public void loginMainPageButton () {
         WebDriver driver = factoryDriver.getDriver();
@@ -49,7 +56,7 @@ public class LoginTest extends FactoryDriver {
     }
 
     @Test
-    @Step("Вход через кнопку «Личный кабинет»")
+    //"Вход через кнопку «Личный кабинет»"
     public void loginPersonalAccount () {
         WebDriver driver = factoryDriver.getDriver();
         MainPage mainPage = new MainPage(driver);
@@ -63,7 +70,7 @@ public class LoginTest extends FactoryDriver {
     }
 
     @Test
-    @Step("Вход через кнопку в форме регистрации")
+    //"Вход через кнопку в форме регистрации"
     public void loginRegistrationForm () {
         WebDriver driver = factoryDriver.getDriver();
         MainPage mainPage = new MainPage(driver);
@@ -79,7 +86,7 @@ public class LoginTest extends FactoryDriver {
 
     }
     @Test
-    @Step("Вход через кнопку в форме восстановления пароля")
+    //"Вход через кнопку в форме восстановления пароля"
 
     public void loginForgotPasswordForm () {
         WebDriver driver = factoryDriver.getDriver();

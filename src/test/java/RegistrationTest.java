@@ -1,24 +1,28 @@
 import io.qameta.allure.Step;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
+import io.restassured.response.Response;
+import org.junit.*;
 import org.openqa.selenium.WebDriver;
-import page.object.FactoryDriver;
-import page.object.LoginPage;
-import page.object.MainPage;
-import page.object.RegisterPage;
+import page.object.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class RegistrationTest extends FactoryDriver {
+public class RegistrationTest  {
 
     @Rule
     public FactoryDriver factoryDriver = new FactoryDriver();
 
+    private UserApi userApi;
+    private String registeredEmail;
+    private String registeredPassword;
+
+
+    @Before
+    public void setUpApi() {
+        userApi = new UserApi();
+    }
     @Test
-    @Step ("Успешная регистрация нового пользователя")
+    //"Успешная регистрация нового пользователя"
     public void shouldRegistrationSuccessful () {
         WebDriver driver = factoryDriver.getDriver();
         MainPage mainPage = new MainPage(driver);
@@ -35,7 +39,7 @@ public class RegistrationTest extends FactoryDriver {
 
     }
     @Test
-    @Step ("Ошибка при пароле короче 6 символов")
+    //"Ошибка при пароле короче 6 символов"
     public void shouldShowErrorForShortPassword() {
         WebDriver driver = factoryDriver.getDriver();
         MainPage mainPage = new MainPage(driver);
@@ -50,5 +54,18 @@ public class RegistrationTest extends FactoryDriver {
         assertTrue("Должно отобразиться сообщение об ошибке",registerPage.isPasswordErrorVisible());
         assertEquals("Некорректный пароль",registerPage.getPasswordError());
 
+    }
+    @After
+    public void deleteRegisteredUser() {
+        // Удаляем пользователя, если он был успешно создан в тесте регистрации
+        if (registeredEmail != null && registeredPassword != null) {
+            // Логинимся, чтобы получить accessToken
+            User user = new User(registeredEmail, registeredPassword, "Астэрия");
+            Response loginResponse = userApi.login(user);
+            String token = loginResponse.jsonPath().getString("accessToken");
+            if (token != null) {
+                userApi.deleteUser(token);
+            }
+        }
     }
 }

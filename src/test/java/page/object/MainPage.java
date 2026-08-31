@@ -1,5 +1,6 @@
 package page.object;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -18,15 +19,12 @@ public class MainPage {
     // Кнопка «Оформить заказ» — появляется после успешного входа (успешная регистрация)
     private final By orderButton = By.xpath(".//button[text()='Оформить заказ']");
     // Вкладка «Булки» в конструкторе — раздел с булочками
-    private final By bunsSection = By.xpath("//div[contains(@class, 'tab_tab')][.//span[text()='Булки']]");
+    private final By bunsSectionTab = By.xpath("//span[text()='Булки']/parent::div");
     // Вкладка «Соусы» в конструкторе — раздел с соусами
-    private final By saucesSection = By.xpath("//div[contains(@class, 'tab_tab')][.//span[text()='Соусы']]");
+    private final By saucesSectionTab = By.xpath("//span[text()='Соусы']/parent::div");
     // Вкладка «Начинки» в конструкторе — раздел с начинками
-    private final By fillingsSection = By.xpath("//div[contains(@class, 'tab_tab')][.//span[text()='Начинки']]");
-    // Заголовки разделов булки,соусы,начинки
-    private final By bunsSectionHeader = By.xpath("//h2[text()='Булки']");
-    private final By saucesSectionHeader = By.xpath("//h2[text()='Соусы']");
-    private final By fillingsSectionHeader = By.xpath("//h2[text()='Начинки']");
+    private final By fillingsSectionTab = By.xpath("//span[text()='Начинки']/parent::div");
+
 
     private WebDriver driver;
     private final WebDriverWait wait;
@@ -35,75 +33,66 @@ public class MainPage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
+    @Step("Открытие главной страницы")
     public void openPage () {
         driver.get("https://stellarburgers.education-services.ru/");
     }
-    // Нажимаем на кнопку войти в аккаунт
+    @Step("Клик по кнопке Войти в аккаунт")
     public void clickLoginButton () {
         driver.findElement(loginButton).click();
     }
-    // Нажимаем на кнопку личный кабинет
+    @Step("Клик по кнопке Личный кабинет")
     public void clickPersonalAccountButton () {
         driver.findElement(personalAccountButton).click();
     }
-    // Нажимаем на раздел булочки
+    @Step("Клик по разделу Булки")
     public void clickBunsSection () {
-        clickElementWithoutScroll(bunsSection);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(bunsSectionHeader));
+        clickTab(bunsSectionTab);
     }
-    // Проверяем, что раздел с булочками открылся
+    @Step("Проверка активности раздела Булки")
     public boolean isBunsSectionActive () {
-        return driver.findElement(bunsSectionHeader).isDisplayed();
+        return isTabActive(bunsSectionTab);
     }
-    // Нажимаем на раздел с соусами
+    @Step("Клик по разделу Соусы")
     public void clickSaucesSection () {
-       driver.findElement(saucesSection).click();
-       waitForHeader(saucesSectionHeader);
+        clickTab(saucesSectionTab);
     }
 
-    // Проверяем, что раздел с соусами открылся
-    public boolean isSaucesSectionActive () {
-        return driver.findElement(saucesSectionHeader).isDisplayed();
-    }
-    // Нажимаем на раздел с начинками
-    public void clickFillingsSection () {
-        driver.findElement(fillingsSection).click();
-        waitForHeader(fillingsSectionHeader);
-    }
-    // Проверяем, что раздел с начинками открылся
-    public boolean isFillingsSectionActive () {
-        return driver.findElement(fillingsSectionHeader).isDisplayed();
-    }
-    // Проверяем успешную авторизацию
-    public boolean isLoginSuccessful() {
-        return !driver.findElements(orderButton).isEmpty();
-    }
-    // Метод для безопасного клика
-    private void clickElement(By locator) {
-        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-        // Прокручиваем элемент в центр видимой области
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
-        // Ждём кликабельности
-        element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        @Step("Проверка активности раздела Соусы")
+        public boolean isSaucesSectionActive () {
+            return isTabActive(saucesSectionTab);
+        }
+        @Step("Клик по разделу Начинки")
+        public void clickFillingsSection () {
+            clickTab(fillingsSectionTab);
+        }
+        @Step("Проверка активности раздела Начинки")
+        public boolean isFillingsSectionActive () {
+            return isTabActive(fillingsSectionTab);
+        }
+        @Step("Проверка успешного входа")
+        public boolean isLoginSuccessful () {
+            return !driver.findElements(orderButton).isEmpty();
+        }
+
+    private boolean isTabActive(By tabLocator) {
         try {
-            element.click();
-        } catch (org.openqa.selenium.ElementClickInterceptedException e) {
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+            wait.until(ExpectedConditions.attributeContains(tabLocator, "class", "tab_tab_type_current"));
+            return true;
+        } catch (org.openqa.selenium.TimeoutException e) {
+            return false;
         }
     }
-    private void waitForHeader(By headerLocator) {
-        WebElement header = wait.until(ExpectedConditions.visibilityOfElementLocated(headerLocator));
-        // Дополнительно прокручиваем к заголовку (чтобы он точно был в зоне видимости)
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", header);
-    }
-    // Клик без прокрутки для булок
-    private void clickElementWithoutScroll(By locator) {
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+
+    private void clickTab(By tabLocator) {
+        WebElement tab = wait.until(ExpectedConditions.elementToBeClickable(tabLocator));
         try {
-            element.click();
+            tab.click();
         } catch (org.openqa.selenium.ElementClickInterceptedException e) {
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", tab);
         }
+        // Ждём активации вкладки
+        wait.until(ExpectedConditions.attributeContains(tabLocator, "class", "tab_tab_type_current"));
     }
 
 }

@@ -12,7 +12,7 @@ public class DesignerTest extends FactoryDriver {
     public FactoryDriver factoryDriver = new FactoryDriver();
 
     @Test
-    @Step("Переход к разделу булки")
+    //"Переход к разделу булки"
     public void GoBunSection () {
         WebDriver driver = factoryDriver.getDriver();
         MainPage mainPage = new MainPage(driver);
@@ -21,7 +21,7 @@ public class DesignerTest extends FactoryDriver {
         assertTrue("Раздел «Булки» должен быть активным", mainPage.isBunsSectionActive());
     }
     @Test
-    @Step("Переход к разделу соусы")
+    //"Переход к разделу соусы"
     public void GoSaucesSection () {
         WebDriver driver = factoryDriver.getDriver();
         MainPage mainPage = new MainPage(driver);
@@ -30,7 +30,7 @@ public class DesignerTest extends FactoryDriver {
         assertTrue("Раздел «Соусы» должен быть активным", mainPage.isSaucesSectionActive());
     }
     @Test
-    @Step("Переход к разделу начинки")
+    //"Переход к разделу начинки"
     public void GoFillingsSection () {
         WebDriver driver = factoryDriver.getDriver();
         MainPage mainPage = new MainPage(driver);
