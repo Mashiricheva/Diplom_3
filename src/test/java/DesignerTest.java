@@ -13,7 +13,7 @@ public class DesignerTest extends FactoryDriver {
 
     @Test
     //"Переход к разделу булки"
-    public void GoBunSection () {
+    public void goBunSection () {
         WebDriver driver = factoryDriver.getDriver();
         MainPage mainPage = new MainPage(driver);
         mainPage.openPage();
@@ -22,7 +22,7 @@ public class DesignerTest extends FactoryDriver {
     }
     @Test
     //"Переход к разделу соусы"
-    public void GoSaucesSection () {
+    public void goSaucesSection () {
         WebDriver driver = factoryDriver.getDriver();
         MainPage mainPage = new MainPage(driver);
         mainPage.openPage();
@@ -31,7 +31,7 @@ public class DesignerTest extends FactoryDriver {
     }
     @Test
     //"Переход к разделу начинки"
-    public void GoFillingsSection () {
+    public void goFillingsSection () {
         WebDriver driver = factoryDriver.getDriver();
         MainPage mainPage = new MainPage(driver);
         mainPage.openPage();
